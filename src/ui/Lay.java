@@ -11,22 +11,24 @@ import javax.swing.ImageIcon;
  * @author ydtg1
  *
  */
-public class Lay {
-	private static final int SIZE = 7;
+abstract public class Lay {
+	protected static final int SIZE = 7;
 	
-	private static Image WINDOW_IMG = new ImageIcon("graphics/window/Window.png").getImage();
+	protected static final int PADDING = 16;
 	
-	private static int WINDOW_W = WINDOW_IMG.getWidth(null);
+	protected static Image WINDOW_IMG = new ImageIcon("graphics/window/Window.png").getImage();
 	
-	private static int WINDOW_H = WINDOW_IMG.getHeight(null);
+	protected static int WINDOW_W = WINDOW_IMG.getWidth(null);
 	
-	private int x;
+	protected static int WINDOW_H = WINDOW_IMG.getHeight(null);
 	
-	private int y;
+	protected int x;
 	
-	private int w;
+	protected int y;
 	
-	private int h;
+	protected int w;
+	
+	protected int h;
 	
 	public Lay(int x,int y,int w,int h) {
 		this.x = x;
@@ -35,7 +37,7 @@ public class Lay {
 		this.h = h;
 	}
 	
-	public void createWindow(Graphics g) {
+	protected void createWindow(Graphics g) {
 		g.drawImage(WINDOW_IMG, x, y, x + SIZE,y + SIZE, 0, 0, SIZE, SIZE, null);
 		g.drawImage(WINDOW_IMG, x + SIZE, y, x + w -SIZE, y + SIZE, SIZE, 0, WINDOW_W - SIZE, SIZE, null); 
 		g.drawImage(WINDOW_IMG, x + w - SIZE, y, x + w , y + SIZE, WINDOW_W - SIZE, 0, WINDOW_W , SIZE, null);
@@ -48,4 +50,6 @@ public class Lay {
 		g.drawImage(WINDOW_IMG, x + SIZE, y + h - SIZE, x + w - SIZE , y + h, SIZE, WINDOW_H - SIZE, WINDOW_W - SIZE , WINDOW_H, null);
 		g.drawImage(WINDOW_IMG, x + w - SIZE, y + h -SIZE, x + w , y + h, WINDOW_W - SIZE, WINDOW_H, WINDOW_W , WINDOW_H, null);
 	}
+	
+	abstract public void paint(Graphics g);
 }
