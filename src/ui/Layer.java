@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * @author ydtg1
  *
  */
-abstract public class Lay {
+abstract public class Layer {
 	protected static final int SIZE = 7;
 	
 	protected static final int PADDING = 16;
@@ -30,7 +30,7 @@ abstract public class Lay {
 	
 	protected int h;
 	
-	public Lay(int x,int y,int w,int h) {
+	public Layer(int x,int y,int w,int h) {
 		this.x = x;
 		this.y = y;
 		this.w = w;

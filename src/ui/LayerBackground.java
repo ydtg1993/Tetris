@@ -5,11 +5,11 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class LayBackground extends Lay {
+public class LayerBackground extends Layer {
 
 	protected static Image IMG_GB = new ImageIcon("graphics/background/light.jpg").getImage();
 	
-	public LayBackground(int x, int y, int w, int h) {
+	public LayerBackground(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
