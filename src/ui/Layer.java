@@ -5,6 +5,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import dto.GameDto;
+
 /**
  * 绘制
  * 
@@ -30,6 +32,16 @@ abstract public class Layer {
 	
 	protected int h;
 	
+	protected GameDto dto = null;
+	
+	public Layer() {
+		
+	}
+	
+	public void setDto(GameDto dto) {
+		this.dto = dto;
+	}
+
 	public Layer(int x,int y,int w,int h) {
 		this.x = x;
 		this.y = y;

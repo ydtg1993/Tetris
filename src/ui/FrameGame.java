@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class FrameGame extends JFrame{
 	
-	public FrameGame() {
+	public FrameGame(PanelGame panelGame){
 		//设置标题
 		this.setTitle("俄罗斯方块");
 		//关闭
@@ -22,7 +22,9 @@ public class FrameGame extends JFrame{
 		int w = (screen.width - this.getWidth()) / 2;
 		int y = (screen.height - this.getHeight()) / 2 - 30;
 		this.setLocation(w, y);
-		this.setContentPane(new PanelGame());
+		this.setContentPane(panelGame);
+		
+		this.setVisible(true);
 	}
 
 

@@ -21,8 +21,33 @@ public class GameConfig {
 		SAXReader reader = new SAXReader();
 		Document doc = reader.read("config/cfg.xml");
 		Element game = doc.getRootElement();
-		Element frame = game.element("frame");
 		
+		this.setUiConfig(game.element("frame"));
+		this.setSystemConfig(game.element("system"));
+		this.setDataConfig(game.element("data"));
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public int getWindowSize() {
+		return windowSize;
+	}
+
+	public int getPadding() {
+		return padding;
+	}
+
+	public List<LayerConfig> getLayersConfig() {
+		return layersConfig;
+	}
+
+	private void setUiConfig(Element frame) {
 		this.width = Integer.parseInt(frame.attributeValue("width"));
 		this.height = Integer.parseInt(frame.attributeValue("height"));
 		this.windowSize = Integer.parseInt(frame.attributeValue("windowSize"));
@@ -31,13 +56,21 @@ public class GameConfig {
 		List<Element> layers= frame.elements("layer");
 		layersConfig = new ArrayList<LayerConfig>();
 		for (Element layer : layers) {
-			LayerConfig lc = new LayerConfig();
-			lc.setClassName(layer.attributeValue("class"));
-			lc.setX(Integer.parseInt(layer.attributeValue("x")));
-			lc.setY(Integer.parseInt(layer.attributeValue("y")));
-			lc.setW(Integer.parseInt(layer.attributeValue("w")));
-			lc.setH(Integer.parseInt(layer.attributeValue("h")));
+			LayerConfig lc = new LayerConfig(
+						layer.attributeValue("class"),
+						Integer.parseInt(layer.attributeValue("x")),
+						Integer.parseInt(layer.attributeValue("y")),
+						Integer.parseInt(layer.attributeValue("w")),
+						Integer.parseInt(layer.attributeValue("h")));
 			layersConfig.add(lc);
 		}
+	}
+	
+	private void setSystemConfig(Element frame) {
+		
+	}
+	
+	private void setDataConfig(Element data) {
+		
 	}
 }

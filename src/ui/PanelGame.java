@@ -1,32 +1,70 @@
 package ui;
 
 import java.awt.Graphics;
-import java.awt.Image;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class PanelGame extends JPanel{
-	private Layer[] lays = null;
+import Control.PlayerControl;
+import config.ConfigFactory;
+import config.GameConfig;
+import config.LayerConfig;
+import dto.GameDto;
 
-	public PanelGame() {
-		lays = new Layer[] {
-				new LayerBackground(0,0,0,0),
-				new LayerDataBase(40,32,334,279),
-				new LayerDisk(40,343,334,279),
-				new LayerGame(414,32,334,590),
-				new LayerButton(788,32,334,124),
-				new LayerNext(788,188,176,148),
-				new LayerLevel(964,188,158,148),
-				new LayerPoint(788,368,334,200),
-				};
+public class PanelGame extends JPanel{
+	private ArrayList<Layer> layers = null;
+	
+	private GameDto dto;
+
+	public PanelGame(GameDto dto){
+		this.dto = dto;
+		initComponent();
+		initLayer();
+	}
+	
+	/**
+	 * 安装玩家控制器
+	 * @param control
+	 */
+	public void setGameControl(PlayerControl control) {
+		this.addKeyListener(control);
+	}
+	
+	private void initComponent() {
+
+	}
+	
+	private void initLayer(){
+		GameConfig cfg = ConfigFactory.getGameConfig();
+		List<LayerConfig> layersCfg = cfg.getLayersConfig();
+		layers = new ArrayList<Layer>(layersCfg.size());
+		
+		try {
+		for (LayerConfig layerConfig : layersCfg) {
+			Class cls = Class.forName(layerConfig.getClassName());
+			Constructor ctr = cls.getConstructor(int.class,int.class,int.class,int.class);
+			Layer l = (Layer)ctr.newInstance(
+						layerConfig.getX(),
+						layerConfig.getY(),
+						layerConfig.getW(),
+						layerConfig.getH()
+					);
+			l.setDto(dto);
+			layers.add(l);
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		for(int i =0;i < lays.length;i++) {
-			lays[i].paint(g);
+		super.paintComponent(g);
+		for(int i = 0; i < layers.size(); i++) {
+			layers.get(i).paint(g);
 		}
-		
+		this.requestFocus();
 	}
 }
