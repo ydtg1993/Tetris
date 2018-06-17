@@ -5,6 +5,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import config.ConfigFactory;
+import config.GameConfig;
 import dto.GameDto;
 
 /**
@@ -14,9 +16,15 @@ import dto.GameDto;
  *
  */
 abstract public class Layer {
-	protected static final int SIZE = 7;
+	protected static final int SIZE;
 	
-	protected static final int PADDING = 16;
+	protected static final int PADDING;
+	
+	static {
+		GameConfig cfg = ConfigFactory.getGameConfig();
+		SIZE = cfg.getWindowSize();
+		PADDING = cfg.getPadding();
+	}
 	
 	protected static Image WINDOW_IMG = new ImageIcon("graphics/window/Window.png").getImage();
 	

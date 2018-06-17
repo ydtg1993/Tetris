@@ -15,9 +15,23 @@ public class GameControl {
 		this.gameService = gameService;
 	}
 
-	public void test() {
-		// TODO Auto-generated method stub
-		this.gameService.gameTest();
+	public void keyUp() {
+		this.gameService.keyUp();
+		this.panelGame.repaint();
+	}
+
+	public void keyDown() {
+		this.gameService.keyDown();
+		this.panelGame.repaint();
+	}
+
+	public void keyRight() {
+		this.gameService.keyRight();
+		this.panelGame.repaint();
+	}
+
+	public void keyLeft() {
+		this.gameService.keyLeft();
 		this.panelGame.repaint();
 	}
 

@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 
 public class LayerBackground extends Layer {
 
-	protected static Image IMG_GB = new ImageIcon("graphics/background/light.jpg").getImage();
+	protected static Image IMG_GB = new ImageIcon("graphics/background/vintage-concrete.png").getImage();
 	
 	public LayerBackground(int x, int y, int w, int h) {
 		super(x, y, w, h);
