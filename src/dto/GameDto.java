@@ -21,6 +21,14 @@ public class GameDto {
 	private int nowPoint;
 	
 	private int nowRemoveLine;
+	
+	public GameDto() {
+		dtoInit();
+	}
+	
+	public void dtoInit() {
+		this.gameMap = new boolean[10][18];
+	}
 
 	public List<Player> getDbRecode() {
 		return dbRecode;
@@ -84,10 +92,6 @@ public class GameDto {
 
 	public void setNowRemoveLine(int nowRemoveLine) {
 		this.nowRemoveLine = nowRemoveLine;
-	}
-
-	public GameDto() {
-		// TODO Auto-generated constructor stub
 	}
 
 }

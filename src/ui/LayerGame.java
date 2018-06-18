@@ -21,14 +21,29 @@ public class LayerGame extends Layer {
 		this.createWindow(g);
 		
 		Point[] points = this.dto.getGameAct().getActPoint();
+		int typeCode = this.dto.getGameAct().getActCode();
+		
 		for(int i = 0;i< points.length;i++) {
 			g.drawImage(ACT, 
 					this.x + points[i].x * ACT_SIZE + 7, 
 					this.y + points[i].y * ACT_SIZE + 7,
 					this.x + points[i].x * ACT_SIZE + ACT_SIZE + 7,
 					this.y + points[i].y * ACT_SIZE + ACT_SIZE + 7,
-					32, 0, 0, 32, null);
+					(typeCode + 1) * ACT_SIZE, 0, (typeCode + 1) * ACT_SIZE + ACT_SIZE, ACT_SIZE, null);
 		}
-		
+		//打印地图
+		boolean[][] map = this.dto.getGameMap();
+		for (int x = 0; x < map.length; x++) {
+			for (int y = 0; y < map[x].length; y++) {
+				if(map[x][y]) {
+				g.drawImage(ACT, 
+						this.x + x * ACT_SIZE + 7, 
+						this.y + y * ACT_SIZE + 7,
+						this.x + x * ACT_SIZE + ACT_SIZE + 7,
+						this.y + y * ACT_SIZE + ACT_SIZE + 7,
+						0,0,32,32, null);
+				}
+			}
+		}
 	}
 }
