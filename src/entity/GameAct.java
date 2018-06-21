@@ -25,7 +25,7 @@ public class GameAct {
 		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,0),new Point(5,0),new Point(6,0)});
 		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,0),new Point(5,0),new Point(4,1)});
 		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,0),new Point(5,0),new Point(3,1)});
-		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,0),new Point(5,0),new Point(4,1)});
+		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,1),new Point(5,0),new Point(4,1)});
 		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(5,1),new Point(5,0),new Point(4,1)});
 		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,0),new Point(5,0),new Point(5,1)});
 		TYPE_CONFIG.add(new Point[] {new Point(4,0),new Point(3,0),new Point(5,1),new Point(4,1)});

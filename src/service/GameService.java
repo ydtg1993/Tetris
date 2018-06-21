@@ -38,7 +38,9 @@ public class GameService {
 		//判断是否能消行
 		
 		//刷新一个方块
-		this.dto.getGameAct().init(random.nextInt(MAX_TYPE));
+		this.dto.getGameAct().init(this.dto.getNext());
+		
+		this.dto.setNext(random.nextInt(MAX_TYPE));
 	}
 
 	public void keyRight() {
